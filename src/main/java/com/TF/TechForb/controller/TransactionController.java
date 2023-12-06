@@ -1,7 +1,7 @@
 package com.TF.TechForb.controller;
 
 import com.TF.TechForb.model.Transaction.*;
-import com.TF.TechForb.service.TransactionService;
+import com.TF.TechForb.service.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/transaction")
 public class TransactionController {
     @Autowired
-    private TransactionService transactionService;
+    private TransactionServiceImpl transactionService;
 
     @GetMapping("/{idAccount}")
     public List<TransactionDTO> getAllByAccount(@PathVariable("idAccount") Long idAccount) {

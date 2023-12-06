@@ -1,7 +1,7 @@
 package com.TF.TechForb.controller;
 
 import com.TF.TechForb.model.MenuItem.MenuItem;
-import com.TF.TechForb.service.MenuItemService;
+import com.TF.TechForb.service.MenuItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/menu-item")
 public class MenuItemController {
     @Autowired
-    private MenuItemService menuItemService;
+    private MenuItemServiceImpl menuItemService;
 
     @GetMapping
     public List<MenuItem> getAll() {

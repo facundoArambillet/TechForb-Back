@@ -1,11 +1,10 @@
 package com.TF.TechForb.controller;
 
-import com.TF.TechForb.model.User.User;
 import com.TF.TechForb.model.User.UserCreateDTO;
 import com.TF.TechForb.model.User.UserDTO;
 import com.TF.TechForb.model.User.UserLoginDTO;
 import com.TF.TechForb.security.Token;
-import com.TF.TechForb.service.UserService;
+import com.TF.TechForb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @GetMapping("/{idUser}")
     public UserDTO getById(@PathVariable("idUser") Long idUser) {

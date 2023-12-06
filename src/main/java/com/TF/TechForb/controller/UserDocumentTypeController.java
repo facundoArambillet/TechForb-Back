@@ -1,8 +1,7 @@
 package com.TF.TechForb.controller;
 
-import com.TF.TechForb.model.User.User;
 import com.TF.TechForb.model.UserDocumentType.UserDocumentType;
-import com.TF.TechForb.service.UserDocumentTypeService;
+import com.TF.TechForb.service.UserDocumentTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @RequestMapping("/user-document-type")
 public class UserDocumentTypeController {
     @Autowired
-    private UserDocumentTypeService userDocumentTypeService;
+    private UserDocumentTypeServiceImpl userDocumentTypeService;
     @GetMapping
     public List<UserDocumentType> getAll() {
         return userDocumentTypeService.getAll();

@@ -2,9 +2,8 @@ package com.TF.TechForb.controller;
 
 import com.TF.TechForb.model.Card.Card;
 import com.TF.TechForb.model.Card.CardDTO;
-import com.TF.TechForb.service.CardService;
+import com.TF.TechForb.service.CardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @RequestMapping("/card")
 public class CardController {
     @Autowired
-    private CardService cardService;
+    private CardServiceImpl cardService;
 
     @GetMapping
     public List<Card> getAll() {
