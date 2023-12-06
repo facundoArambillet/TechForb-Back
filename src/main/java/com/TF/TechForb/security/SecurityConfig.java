@@ -47,6 +47,7 @@ public class SecurityConfig {
                         .requestMatchers(AUTH_WHITELIST_SWAGGER).permitAll()
                         .requestMatchers(HttpMethod.GET,"/user-document-type").permitAll()
                         .requestMatchers(HttpMethod.GET,"/user-document-type/type/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/user-document-type").permitAll()
                         .requestMatchers(HttpMethod.POST,"/user/register").permitAll()
                         .requestMatchers(HttpMethod.POST,"/user/login").permitAll()
                         .requestMatchers(HttpMethod.GET,"/account/byUser/**").permitAll()
