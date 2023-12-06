@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CardServiceImpl implements CardService{
+public class CardServiceImpl implements CardService {
     @Autowired
     private CardRepository cardRepository;
     @Autowired
