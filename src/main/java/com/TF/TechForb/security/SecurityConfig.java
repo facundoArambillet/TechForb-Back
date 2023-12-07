@@ -77,7 +77,8 @@ public class SecurityConfig {
                 new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("https://techforbv2.netlify.app/");
+        config.addAllowedOrigin("http://localhost:4200/");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);

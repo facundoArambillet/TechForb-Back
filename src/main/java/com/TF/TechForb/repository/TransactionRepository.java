@@ -37,14 +37,30 @@ public interface TransactionRepository extends JpaRepository<Transaction,Long> {
     @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.senderAccount.idAccount = :idAccount")
     Double getSenderTransactionsByAccount(@Param("idAccount") Long idAccount);
 
-    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date FROM transactions t " +
-            "WHERE t.date >= DATE_ADD(NOW(), INTERVAL -7 DAY) " +
+
+//              Executable queries in mysql
+
+//    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date FROM transactions t " +
+//            "WHERE t.date >= DATE_ADD(NOW, INTERVAL -7 DAY) " +
+//            "AND t.id_account_receiver = :idAccount " +
+//            "GROUP BY t.date", nativeQuery = true)
+//    List<TransactionAccumulatedAmountDTO> getReceiverTransactionsInTheLastWeekByAccount(@Param("idAccount") Long idAccount);
+//    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date FROM transactions t " +
+//            "WHERE t.date >= DATE_ADD(NOW, INTERVAL -7 DAY) " +
+//            "AND t.id_account_sender = :idAccount " +
+//            "GROUP BY t.date", nativeQuery = true)
+//    List<TransactionAccumulatedAmountDTO> getSenderTransactionsInTheLastWeekByAccount(@Param("idAccount") Long idAccount);
+
+    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date " +
+            "FROM transactions t " +
+            "WHERE t.date >= CURRENT_TIMESTAMP() - INTERVAL '7' DAY " +
             "AND t.id_account_receiver = :idAccount " +
             "GROUP BY t.date", nativeQuery = true)
     List<TransactionAccumulatedAmountDTO> getReceiverTransactionsInTheLastWeekByAccount(@Param("idAccount") Long idAccount);
 
-    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date FROM transactions t " +
-            "WHERE t.date >= DATE_ADD(NOW(), INTERVAL -7 DAY) " +
+    @Query(value = "SELECT SUM(t.amount) AS accumulatedAmount, t.date \n" +
+            "FROM transactions t " +
+            "WHERE t.date >= CURRENT_TIMESTAMP() - INTERVAL '7' DAY " +
             "AND t.id_account_sender = :idAccount " +
             "GROUP BY t.date", nativeQuery = true)
     List<TransactionAccumulatedAmountDTO> getSenderTransactionsInTheLastWeekByAccount(@Param("idAccount") Long idAccount);
